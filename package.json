@@ -1,0 +1,24 @@
+{
+  "name": "animation",
+  "version": "1.0.0",
+  "description": "animation in frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "docsify serve docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azl397985856/animation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/azl397985856/animation/issues"
+  },
+  "homepage": "https://github.com/azl397985856/animation#readme",
+  "devDependencies": {
+    "docsify-cli": "^4.2.1"
+  }
+}
