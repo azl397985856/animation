@@ -3,4 +3,4 @@
 # 前端动画
 
 [GitHub](https://github.com/azl397985856/animation)
-[进入](?id=intro)
+[进入](#intro)
