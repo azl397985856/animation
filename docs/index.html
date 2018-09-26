@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+  <base href="/">
   <meta charset="UTF-8">
   <title>前端动画</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -37,6 +38,36 @@
         transform: rotate(360deg);
       }
     }
+
+
+
+
+    .bling {
+      /* Choose the animation */
+      animation-name: blingBling;
+
+      /* The animation’s duration */
+      animation-duration: 1300ms;
+
+      /* The number of times we want
+      the animation to run */
+      animation-iteration-count: infinite;
+
+      /* Causes the animation to reverse
+      on every odd iteration */
+      animation-direction: alternate;
+    }
+
+    @keyframes blingBling {
+      0% {
+        opacity: 0;
+      }
+
+
+      100% {
+        opacity: 1;
+      }
+    }
   </style>
   <div id="app" class="load-4">
     <div class="ring-1"></div>
@@ -49,7 +80,7 @@
 
   <script src="https://cdn.bootcss.com/react/15.6.1/react.js"></script>
   <script src="https://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
-  <script src="http://localhost:5000/dist/docsify-demo-box-react.min.js"></script>
+  <script src="../external/docsify-demo-box-react.min.js"></script>
 
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
