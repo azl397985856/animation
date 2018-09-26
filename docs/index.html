@@ -80,7 +80,7 @@
 
   <script src="https://cdn.bootcss.com/react/15.6.1/react.js"></script>
   <script src="https://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
-  <script src="../external/docsify-demo-box-react.min.js"></script>
+  <script src="//unpkg.com/docsify-demo-box-react-lucifer@1.0.4/dist/docsify-demo-box-react.min.js"></script>
 
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
@@ -91,18 +91,6 @@
         '<scr' + 'ipt src="//cdn.bootcss.com/react/15.6.1/react-dom.js"></scr' + 'ipt>'
       // DemoBoxReact是docsify-demo-box-react插件导出的全局变量
       return DemoBoxReact.create(jsResources)
-    }
-
-    function createStyle(css) {
-      var style = document.createElement('style')
-
-      style.type = 'text/css'
-      if (style.styleSheet) {
-        style.styleSheet.cssText = css
-      } else {
-        style.appendChild(document.createTextNode(css))
-      }
-      document.head.appendChild(style)
     }
 
     window.$docsify = {
