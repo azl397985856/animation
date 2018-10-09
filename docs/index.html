@@ -72,6 +72,30 @@
     <div class="ring-1"></div>
   </div>
 
+  <script memo="工具类">
+    // 等效于数学函数  y = x
+    function constant(currentTime) {
+      return 1 * currentTime;
+    }
+
+    function animate(duration, cb, easing = constant) {
+      const startTime = performance.now();
+
+      const raf = requestAnimationFrame(loop);
+      function loop() {
+
+        const currentTime = performance.now();
+        const elapsed = currentTime - startTime;
+        const raf = requestAnimationFrame(loop);
+
+        if (duration && elapsed > duration) {
+          return cancelAnimationFrame(raf);
+        }
+        return cb(easing(elapsed));
+      }
+    }
+  </script>
+
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
   <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
