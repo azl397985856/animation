@@ -1,139 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>前端动画</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="Description" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
 
-<head>
-  <meta charset="UTF-8">
-  <title>前端动画</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css" />
+  </head>
 
-  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
-</head>
-
-<body>
-  <style>
-    .ring-1 {
-      width: 10px;
-      height: 10px;
-      margin: 0 auto;
-      padding: 10px;
-      border: 7px dashed #4b9cdb;
-      border-radius: 100%;
-    }
-
-    .load-4 .ring-1 {
-      animation: loadingD 1.5s .3s cubic-bezier(.17, .37, .43, .67) infinite;
-    }
-
-    @keyframes loadingD {
-      0 {
-        transform: rotate(0deg);
-      }
-      50% {
-        transform: rotate(180deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-
-
-
-
-    .bling {
-      /* Choose the animation */
-      animation-name: blingBling;
-
-      /* The animation’s duration */
-      animation-duration: 1300ms;
-
-      /* The number of times we want
-      the animation to run */
-      animation-iteration-count: infinite;
-
-      /* Causes the animation to reverse
-      on every odd iteration */
-      animation-direction: alternate;
-    }
-
-    @keyframes blingBling {
-      0% {
-        opacity: 0;
+  <body>
+    <style>
+      .ring-1 {
+        width: 10px;
+        height: 10px;
+        margin: 0 auto;
+        padding: 10px;
+        border: 7px dashed #4b9cdb;
+        border-radius: 100%;
       }
 
-
-      100% {
-        opacity: 1;
+      .load-4 .ring-1 {
+        animation: loadingD 1.5s 0.3s cubic-bezier(0.17, 0.37, 0.43, 0.67)
+          infinite;
       }
-    }
-  </style>
-  <div id="app" class="load-4">
-    <div class="ring-1"></div>
-  </div>
 
-  <script memo="工具类">
-    // 等效于数学函数  y = x
-    function constant(currentTime) {
-      return 1 * currentTime;
-    }
-
-    function animate(duration, cb, easing = constant) {
-      const startTime = performance.now();
-
-      const raf = requestAnimationFrame(loop);
-      function loop() {
-
-        const currentTime = performance.now();
-        const elapsed = currentTime - startTime;
-        const raf = requestAnimationFrame(loop);
-
-        if (duration && elapsed > duration) {
-          return cancelAnimationFrame(raf);
+      @keyframes loadingD {
+        0 {
+          transform: rotate(0deg);
         }
-        return cb(easing(elapsed));
+        50% {
+          transform: rotate(180deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
-    }
-  </script>
 
-  <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-  <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
-  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  <script src="https://unpkg.com/docsify-copy-code@2"></script>
+      .bling {
+        /* Choose the animation */
+        animation-name: blingBling;
 
-  <script src="https://cdn.bootcss.com/react/15.6.1/react.js"></script>
-  <script src="https://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
-  <script src="//unpkg.com/docsify-demo-box-react-lucifer@1.0.8/dist/docsify-demo-box-react.min.js"></script>
+        /* The animation’s duration */
+        animation-duration: 1300ms;
 
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        /* The number of times we want
+      the animation to run */
+        animation-iteration-count: infinite;
 
+        /* Causes the animation to reverse
+      on every odd iteration */
+        animation-direction: alternate;
+      }
 
-  <script>
-    function setUpReactPlugin() {
-      const jsResources = '<scr' + 'ipt src="//cdn.bootcss.com/react/15.6.1/react.js"></scr' + 'ipt>\n' +
-        '<scr' + 'ipt src="//cdn.bootcss.com/react/15.6.1/react-dom.js"></scr' + 'ipt>'
-      // DemoBoxReact是docsify-demo-box-react插件导出的全局变量
-      return DemoBoxReact.create(jsResources)
-    }
+      @keyframes blingBling {
+        0% {
+          opacity: 0;
+        }
 
-    window.$docsify = {
-      name: '前端动画',
-      repo: 'https://github.com/azl397985856/animation',
-      disqus: 'shortname',
-      loadSidebar: true,
-      coverpage: true,
-      subMaxLevel: 2,
-      search: {
-        maxAge: 86400000, // 过期时间，单位毫秒，默认一天
-        paths: "auto",
-        placeholder: '输入关键字检索',
-        noData: "无结果"
-      },
-      plugins: [setUpReactPlugin()],
-      depth: 6 // 搜索标题的最大程级, 1 - 6
-    }
-  </script>
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+    <div id="app" class="load-4"><div class="ring-1"></div></div>
 
-</body>
+    <script memo="工具类">
+      // 等效于数学函数  y = x
+      function constant(currentTime) {
+        return 1 * currentTime;
+      }
 
+      function animate(duration, cb, easing = constant) {
+        return new Promise(r => {
+          const startTime = performance.now();
+
+          const raf = requestAnimationFrame(loop);
+          function loop() {
+            const currentTime = performance.now();
+            const elapsed = currentTime - startTime;
+            const raf = requestAnimationFrame(loop);
+
+            if (duration && elapsed > duration) {
+              cancelAnimationFrame(raf);
+              return r();
+            }
+            cb(easing(elapsed));
+          }
+        });
+      }
+    </script>
+
+    <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+    <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
+    <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+    <script src="https://unpkg.com/docsify-copy-code@2"></script>
+
+    <script src="https://cdn.bootcss.com/react/15.6.1/react.js"></script>
+    <script src="https://cdn.bootcss.com/react/15.6.1/react-dom.js"></script>
+    <script src="//unpkg.com/docsify-demo-box-react-lucifer@1.0.8/dist/docsify-demo-box-react.min.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script>
+      function setUpReactPlugin() {
+        const jsResources =
+          "<scr" +
+          'ipt src="//cdn.bootcss.com/react/15.6.1/react.js"></scr' +
+          "ipt>\n" +
+          "<scr" +
+          'ipt src="//cdn.bootcss.com/react/15.6.1/react-dom.js"></scr' +
+          "ipt>";
+        // DemoBoxReact是docsify-demo-box-react插件导出的全局变量
+        return DemoBoxReact.create(jsResources);
+      }
+
+      window.$docsify = {
+        name: "前端动画",
+        repo: "https://github.com/azl397985856/animation",
+        disqus: "shortname",
+        loadSidebar: true,
+        coverpage: true,
+        subMaxLevel: 2,
+        search: {
+          maxAge: 86400000, // 过期时间，单位毫秒，默认一天
+          paths: "auto",
+          placeholder: "输入关键字检索",
+          noData: "无结果"
+        },
+        plugins: [setUpReactPlugin()],
+        depth: 6 // 搜索标题的最大程级, 1 - 6
+      };
+    </script>
+  </body>
 </html>

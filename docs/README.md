@@ -133,12 +133,12 @@
 上面是 css 动画，属于声明式。 CSS3 动画是目前最为盛行的前端实现动画的方式之一，尤其是在移动端。
 CSS3 动画是通过修改 DOM 的样式来实现动画。
 
-如果使用原生 JavaScript 写动画，不借助于其他动画引擎的话，是命令式的。
+如果使用原生 JavaScript 写动画，不借助于其他动画引擎以及新的 animation dom api 的话，是命令式的。
 最早用 JavaScript 实现动画的方式是借助于 `setInterval` 这个 web-api。 后期又有了`requestAnimationFrame`.
 requestAnimationFrame 接收一个函数，
 这个函数将在下一帧渲染之前执行，也就是说，不需要太多次的计算，
 只要在下一帧渲染之前，我们将需要修改的数值修改掉即可。
-requestAnimationFrame 的帧率和硬件以及浏览器有关，一般是 60FPS。
+requestAnimationFrame 的执行频率和你的主线程有关。
 
 不过两者的原理都是一样的，就是`在不同时间输出不同的图像`。
 
@@ -223,7 +223,9 @@ flash 中有一种补间动画是动作补间动画，它是指在 Flash 的时�
       const interval = setInterval(() => {
         const currentTime = performance.now();
         if (currentTime - startTime > max) {
+          box.style.transform = `translateX(${0}px)`;
           clearInterval(interval)
+          this.move();
         }
         y = y + 5;
         box.style.transform = `translateX(${y}px)`;
@@ -296,7 +298,8 @@ animate(null, y => (box.style.transform = `translateX(${y}px)`), constant);
       const box = document.querySelector('.boxed-math-box');
       // 当然你可以扩展下animate方法使之支持start,end等更多参数
       // 后面讲动画引擎，我会带大家实现一个更完整的动画引擎。
-      animate(5000, y => (box.style.transform = `translateX(${y}px)`), x => 0.1* x);
+      const start = () => animate(5000, y => (box.style.transform = `translateX(${y}px)`), x => 0.1* x).then(start)
+        start();
     }
 
     render() {
