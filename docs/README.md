@@ -130,6 +130,10 @@
   }
 ```
 
+> 不管是什么动画， 如果要浏览器自动计算中间帧，那么就需要触发动画的属性为数字类型。
+> 如果不是数字类型，那么需要将其转化为数字，或者自己提供中间帧，而不是让浏览器去计算中间帧。
+> 关于具体原因，等讲了缓动函数，大家或许就能够明白了。
+
 上面是 css 动画，属于声明式。 CSS3 动画是目前最为盛行的前端实现动画的方式之一，尤其是在移动端。
 CSS3 动画是通过修改 DOM 的样式来实现动画。
 
@@ -363,7 +367,42 @@ Google developers 给出的准则是：
 
 ### 撸一个动画引擎(TODO)
 
-参考 web animation api，我们自己写一个动画引擎。
+我们的目标是设计并实现一个简洁 ，声明式，容易调试的动画引擎。
+
+这方面我参考了 `animation dom` 和 `animejs` 的 api。
+还有一个比较不错的动画库，叫 `popmotion`，不过由于其内容比较多，暂时不打算实现，
+有兴趣的可以自己去看下它的文档和源码。
+
+使用起来大概是这个样子的：
+
+```js
+anime({
+  targets: ".sample",
+  translateX: [0, 100],
+  rotate: "1turn",
+  backgroundColor: "#FFF",
+  duration: 2000,
+  loop: true
+});
+```
+
+#### 计划支持
+
+- keyframe
+
+- control
+
+- css transform(with prefix supported)
+
+- easing
+
+- debug mode
+
+#### 代码
+
+```js
+function anime() {}
+```
 
 ### 一些常用动画场景(TODO)
 
